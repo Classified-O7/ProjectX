@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup,FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  loginForm = new FormGroup(
+    {
+      email:new FormControl(),
+      pass:new FormControl()
+    }
+  )
+
+  constructor(private Router : Router, private toastr : ToastrService) { }
 
   ngOnInit(): void {
+  }
+  login(){
+    if(this.loginForm.value.email == 'a@a.a' && this.loginForm.value.pass == 'a')
+    {
+      this.toastr.success('Welcome', 'Login Successful')
+      this.Router.navigateByUrl('/layout/main')
+    }
+    else
+    {
+      this.toastr.error('Error', 'Invalid credentials')
+    }
   }
 
 }
