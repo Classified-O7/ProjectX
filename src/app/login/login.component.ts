@@ -21,13 +21,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private Router : Router, private toastr : ToastrService, private spinner:NgxSpinnerService, private authS:AuthService) { }
 
-  ngOnInit(): void {
-    console.log(this.authS.getS())
-    if(this.authS.getS() != null)
-    {
-      this.Router.navigateByUrl('/layout/main')
-    }
-  }
+  ngOnInit(): void {}
   login(){
       this.spinner.show();
       if(this.loginForm.value.email == 'a@a.a' && this.loginForm.value.pass == 'a')
